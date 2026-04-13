@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Henrique Teruya — Fullstack Developer</title>
+  <meta name="description" content="Henrique Teruya é um desenvolvedor fullstack baseado em São Paulo. Projetos completos do front-end ao deploy em produção.">
+  <meta name="author" content="Henrique Teruya">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Henrique Teruya — Fullstack Developer">
+  <meta property="og:description" content="Projetos completos do front-end ao deploy em produção.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts: Satoshi (display) + General Sans (body) from Fontshare -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" id="nav-logo">HT</a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#skills">Skills</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ Mobile Menu Overlay ═══ -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu de navegação">
+    <div class="mobile-menu-inner">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#skills">Skills</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+
+  <!-- ═══ Main Content ═══ -->
+  <main>
+
+    <!-- ─── Hero ─── -->
+    <section id="hero" class="section section--dark hero">
+      <div class="container">
+        <p class="hero-label reveal">Fullstack Developer</p>
+        <h1 class="hero-title reveal reveal-d1">Eu construo produtos digitais<br>do zero ao deploy.</h1>
+        <p class="hero-subtitle reveal reveal-d2">Front-end · Back-end · Infraestrutura — São Paulo, SP</p>
+        <div class="hero-ctas reveal reveal-d3">
+          <a href="#projetos" class="btn btn--primary" id="cta-projects">Ver Projetos</a>
+          <a href="#contato" class="btn btn--outline" id="cta-contact-hero">Contato</a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator reveal reveal-d4">
+        <span>scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ─── Sobre ─── -->
+    <section id="sobre" class="section section--light">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="section-label reveal">Sobre</p>
+            <h2 class="section-title reveal reveal-d1">Soluções completas,<br>do primeiro commit ao deploy.</h2>
+            <p class="reveal reveal-d2">
+              Desenvolvo projetos de ponta a ponta — da interface ao servidor, do banco de dados ao deploy em produção. Meu foco é entregar soluções que funcionam, escalam e são construídas com código limpo.
+            </p>
+            <p class="reveal reveal-d3">
+              Trabalho com as tecnologias que melhor resolvem cada problema: React e Next.js no front, Node.js e Python no back, AWS e Supabase na infraestrutura. Cada projeto é uma oportunidade de construir algo que importa.
+            </p>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat reveal">
+              <div class="stat-value">10+</div>
+              <div class="stat-label">Projetos entregues</div>
+            </div>
+            <div class="stat reveal reveal-d1">
+              <div class="stat-value">Full Stack</div>
+              <div class="stat-label">Front · Back · Infra</div>
+            </div>
+            <div class="stat reveal reveal-d2">
+              <div class="stat-value">Cloud</div>
+              <div class="stat-label">AWS · Supabase · Vercel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Projetos ─── -->
+    <section id="projetos" class="section section--dark">
+      <div class="container">
+        <div class="projects-header">
+          <p class="section-label reveal">Projetos</p>
+          <h2 class="section-title reveal reveal-d1">Trabalhos selecionados</h2>
+          <p class="section-subtitle reveal reveal-d2">Projetos reais que demonstram domínio técnico de ponta a ponta.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="project-card reveal">
+            <div class="project-card-header">
+              <span class="project-number">01</span>
+            </div>
+            <h3 class="project-name">Syntra ERP</h3>
+            <p class="project-desc">Sistema de gestão empresarial completo com módulos de estoque, demandas e garantias. Arquitetura MVC com interface desktop robusta.</p>
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">Swing</span>
+              <span class="project-tag">MVC</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="Ver demo do Syntra ERP">Demo <span class="project-link-arrow">→</span></a>
+              <a href="#" class="project-link" aria-label="Ver código do Syntra ERP">Código <span class="project-link-arrow">→</span></a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal reveal-d1">
+            <div class="project-card-header">
+              <span class="project-number">02</span>
+            </div>
+            <h3 class="project-name">CV CRM Dashboard</h3>
+            <p class="project-desc">Dashboard de simulação imobiliária com indicadores financeiros em tempo real, fluxo de pagamentos e análise comparativa.</p>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Supabase</span>
+              <span class="project-tag">React</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="Ver demo do CV CRM Dashboard">Demo <span class="project-link-arrow">→</span></a>
+              <a href="#" class="project-link" aria-label="Ver código do CV CRM Dashboard">Código <span class="project-link-arrow">→</span></a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal">
+            <div class="project-card-header">
+              <span class="project-number">03</span>
+            </div>
+            <h3 class="project-name">E-commerce API</h3>
+            <p class="project-desc">API RESTful completa para e-commerce com autenticação JWT, integração de pagamentos, upload S3 e pipeline CI/CD automatizado.</p>
+            <div class="project-tags">
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">AWS</span>
+              <span class="project-tag">Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="Ver demo do E-commerce API">Demo <span class="project-link-arrow">→</span></a>
+              <a href="#" class="project-link" aria-label="Ver código do E-commerce API">Código <span class="project-link-arrow">→</span></a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal reveal-d1">
+            <div class="project-card-header">
+              <span class="project-number">04</span>
+            </div>
+            <h3 class="project-name">Portfolio v2</h3>
+            <p class="project-desc">Este portfólio — design minimalista, animações suaves, zero dependências. Código limpo e performático, inspirado na Apple.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="Ver demo do Portfolio v2">Demo <span class="project-link-arrow">→</span></a>
+              <a href="#" class="project-link" aria-label="Ver código do Portfolio v2">Código <span class="project-link-arrow">→</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Skills ─── -->
+    <section id="skills" class="section section--light">
+      <div class="container">
+        <div class="skills-header">
+          <p class="section-label reveal">Skills</p>
+          <h2 class="section-title reveal reveal-d1">Stack técnica</h2>
+          <p class="section-subtitle reveal reveal-d2">As tecnologias que uso para construir projetos completos.</p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-category reveal">
+            <h3>Front-end</h3>
+            <ul class="skill-list">
+              <li class="skill-item">JavaScript</li>
+              <li class="skill-item">TypeScript</li>
+              <li class="skill-item">React</li>
+              <li class="skill-item">Next.js</li>
+              <li class="skill-item">HTML</li>
+              <li class="skill-item">CSS</li>
+              <li class="skill-item">Flutter</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal reveal-d1">
+            <h3>Back-end</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Node.js</li>
+              <li class="skill-item">Python</li>
+              <li class="skill-item">.NET</li>
+              <li class="skill-item">Java</li>
+              <li class="skill-item">C#</li>
+              <li class="skill-item">MySQL</li>
+              <li class="skill-item">PostgreSQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal reveal-d2">
+            <h3>Infraestrutura</h3>
+            <ul class="skill-list">
+              <li class="skill-item">AWS</li>
+              <li class="skill-item">Supabase</li>
+              <li class="skill-item">Firebase</li>
+              <li class="skill-item">Railway</li>
+              <li class="skill-item">Vercel</li>
+              <li class="skill-item">Netlify</li>
+              <li class="skill-item">Docker</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Contato ─── -->
+    <section id="contato" class="section section--dark contact">
+      <div class="container contact-content">
+        <p class="section-label reveal" style="text-align: center;">Contato</p>
+        <h2 class="contact-title reveal reveal-d1">Vamos construir<br>algo juntos?</h2>
+        <p class="contact-subtitle reveal reveal-d2">Estou disponível para projetos freelance, colaborações e oportunidades de trabalho.</p>
+
+        <div class="contact-cta reveal reveal-d3">
+          <a href="mailto:contato@henriqueteruya.dev" class="btn btn--primary btn--large" id="cta-email">
+            contato@henriqueteruya.dev
+          </a>
+        </div>
+
+        <div class="contact-links reveal reveal-d4">
+          <a href="https://linkedin.com/in/henriqueteruya" target="_blank" rel="noopener noreferrer" class="contact-link" id="link-linkedin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Henrique-Teruya" target="_blank" rel="noopener noreferrer" class="contact-link" id="link-github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">© 2026 Henrique Teruya. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="https://linkedin.com/in/henriqueteruya" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/Henrique-Teruya" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Floating Contact CTA ═══ -->
+  <a href="#contato" class="floating-cta" id="floating-cta" aria-label="Ir para contato">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
