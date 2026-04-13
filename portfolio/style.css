@@ -1099,6 +1099,36 @@ button:focus-visible {
   }
 }
 
+/* ─── Vertical Cut Reveal ────────────────────────────── */
+
+h2.vertical-cut-reveal.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.v-cut-outer {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.v-cut-space {
+  display: inline-block;
+  width: 0.25em; 
+}
+
+.v-cut-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  /* Custom spring-like bezier matching stiffness 200, damping 21 */
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.vertical-cut-reveal.is-visible .v-cut-inner {
+  transform: translateY(0);
+}
+
 /* ─── Responsive: Tablet (640px+) ───────────────────── */
 
 @media (min-width: 640px) {

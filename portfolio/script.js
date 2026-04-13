@@ -32,6 +32,48 @@
     }
   }
 
+  // ─── Vertical Cut Reveal Integration ───────────────────
+  
+  const cutRevealElements = document.querySelectorAll('.vertical-cut-reveal');
+
+  cutRevealElements.forEach(el => {
+    // Check if it has a base delay from reveal-d* classes
+    let baseDelay = 0;
+    if (el.classList.contains('reveal-d1')) baseDelay = 100;
+    else if (el.classList.contains('reveal-d2')) baseDelay = 200;
+    else if (el.classList.contains('reveal-d3')) baseDelay = 300;
+    else if (el.classList.contains('reveal-d4')) baseDelay = 400;
+
+    const newHtml = [];
+    Array.from(el.childNodes).forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          if (char === ' ') {
+            newHtml.push('<span class="v-cut-space">&nbsp;</span>');
+          } else if (char === '\n' || char === '\r') {
+            // Ignore raw newlines
+          } else {
+            newHtml.push(`<span class="v-cut-outer"><span class="v-cut-inner">${char}</span></span>`);
+          }
+        }
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') {
+        newHtml.push('<br>');
+      } else {
+        newHtml.push(node.outerHTML || node.textContent);
+      }
+    });
+    
+    el.innerHTML = newHtml.join('');
+
+    const innerSpans = el.querySelectorAll('.v-cut-inner');
+    innerSpans.forEach((span, i) => {
+      // 25ms stagger per character as requested
+      span.style.transitionDelay = `${baseDelay + (i * 25)}ms`;
+    });
+  });
+
   // ─── Scroll-triggered Reveal (IntersectionObserver) ──
 
   const revealObserver = new IntersectionObserver(
