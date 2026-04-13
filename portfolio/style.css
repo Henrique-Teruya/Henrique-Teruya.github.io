@@ -1187,10 +1187,7 @@ button:focus-visible {
   }
 
   .about-top {
-    grid-template-areas: "text image";
-    grid-template-columns: 1.3fr 0.7fr;
-    align-items: center;
-    gap: var(--space-lg);
+    display: block;
   }
 
   .about-text {
@@ -1203,9 +1200,7 @@ button:focus-visible {
   }
 
   .about-image {
-    grid-area: image;
-    max-width: 100%;
-    margin: 0;
+    display: none;
   }
 
   .about-stats {
