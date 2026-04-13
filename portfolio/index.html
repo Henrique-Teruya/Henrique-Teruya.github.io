@@ -55,6 +55,10 @@
 
     <!-- ─── Hero ─── -->
     <section id="hero" class="section section--dark hero">
+      <div class="hero-video-container">
+        <video id="hero-video" autoplay muted loop playsinline></video>
+        <div class="hero-video-overlay"></div>
+      </div>
       <div class="container">
         <p class="hero-label reveal">Junior Developer</p>
         <h1 class="hero-title reveal reveal-d1">Henrique Teruya de Queiroz</h1>
@@ -63,11 +67,6 @@
           <a href="#projetos" class="btn btn--primary" id="cta-projects">Ver Projetos</a>
           <a href="#contato" class="btn btn--outline" id="cta-contact-hero">Contato</a>
         </div>
-      </div>
-
-      <div class="scroll-indicator reveal reveal-d4">
-        <span>scroll</span>
-        <div class="scroll-line"></div>
       </div>
     </section>
 
@@ -306,8 +305,8 @@
         <p class="contact-subtitle reveal reveal-d2">Estou disponível para projetos freelance, colaborações e oportunidades de trabalho.</p>
 
         <div class="contact-cta reveal reveal-d3">
-          <a href="mailto:contato@henriqueteruya.dev" class="btn btn--primary btn--large" id="cta-email">
-            contato@henriqueteruya.dev
+          <a href="mailto:henrique.teruya7@gmail.com" class="btn btn--primary btn--large" id="cta-email">
+            henrique.teruya7@gmail.com
           </a>
         </div>
 
@@ -353,6 +352,8 @@
     </svg>
   </a>
 
+  <!-- Hls.js for .m3u8 support -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="script.js"></script>
 </body>
 </html>

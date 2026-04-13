@@ -265,14 +265,20 @@ button:focus-visible {
   right: 0;
   height: var(--nav-height);
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  transition: border-color var(--duration-normal) var(--ease-out-quart);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: 
+    background var(--duration-normal) var(--ease-out-quart),
+    backdrop-filter var(--duration-normal) var(--ease-out-quart),
+    border-color var(--duration-normal) var(--ease-out-quart);
   border-bottom: 1px solid transparent;
 }
 
 .nav.is-scrolled {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom-color: rgba(245, 245, 247, 0.08);
 }
 
@@ -431,12 +437,49 @@ button:focus-visible {
 /* ─── Hero Section ──────────────────────────────────── */
 
 .hero {
-  min-height: 100vh;
+  position: relative;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  padding-top: calc(var(--nav-height) + var(--space-3xl));
-  padding-bottom: var(--space-5xl);
+  padding-top: var(--nav-height);
+  overflow: hidden;
+  background-color: #000;
+}
+
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: #000;
+}
+
+#hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0,0,0,0.4) 0%, 
+    rgba(0,0,0,0.2) 50%, 
+    rgba(0,0,0,0.6) 85%, 
+    var(--bg-light) 100%
+  );
+  z-index: 1;
+}
+
+.hero .container {
   position: relative;
+  z-index: 2;
 }
 
 .hero-label {

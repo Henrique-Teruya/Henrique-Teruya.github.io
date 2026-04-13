@@ -15,6 +15,22 @@
   const heroSection = document.getElementById('hero');
   const mobileLinks = mobileMenu.querySelectorAll('a');
   const revealElements = document.querySelectorAll('.reveal');
+  const heroVideo = document.getElementById('hero-video');
+  const videoSrc = 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8';
+
+  // ─── Video Background HLS Init ───────────────────────
+
+  if (heroVideo) {
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(heroVideo);
+    } 
+    // Safari has native HLS support
+    else if (heroVideo.canPlayType('application/vnd.apple.mpegurl')) {
+      heroVideo.src = videoSrc;
+    }
+  }
 
   // ─── Scroll-triggered Reveal (IntersectionObserver) ──
 
