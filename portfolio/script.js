@@ -296,4 +296,86 @@
       el.classList.add('is-visible');
     });
   }
+
+  // ─── Lightbox Logic ──────────────────────────────────
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.lightbox-next');
+  const projectImages = document.querySelectorAll('.project-mosaic img');
+
+  let currentGallery = [];
+  let currentIndex = 0;
+
+  const openLightbox = (imgEl) => {
+    const parentMosaic = imgEl.closest('.project-mosaic');
+    currentGallery = Array.from(parentMosaic.querySelectorAll('img'));
+    currentIndex = currentGallery.indexOf(imgEl);
+
+    updateLightbox();
+    
+    lightbox.classList.add('is-active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-open');
+  };
+
+  const updateLightbox = () => {
+    const targetImg = currentGallery[currentIndex];
+    lightboxImg.src = targetImg.src;
+    lightboxImg.alt = targetImg.alt;
+
+    // Show/hide arrows based on gallery size
+    if (currentGallery.length > 1) {
+      lightboxPrev.style.display = 'flex';
+      lightboxNext.style.display = 'flex';
+    } else {
+      lightboxPrev.style.display = 'none';
+      lightboxNext.style.display = 'none';
+    }
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-open');
+    setTimeout(() => {
+      lightboxImg.src = '';
+    }, 300);
+  };
+
+  const navigateLightbox = (direction) => {
+    currentIndex = (currentIndex + direction + currentGallery.length) % currentGallery.length;
+    updateLightbox();
+  };
+
+  projectImages.forEach((img) => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(-1);
+  });
+  lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(1);
+  });
+  
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.closest('.lightbox-content')) {
+      if (e.target !== lightboxImg) closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-active')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft' && currentGallery.length > 1) navigateLightbox(-1);
+    if (e.key === 'ArrowRight' && currentGallery.length > 1) navigateLightbox(1);
+  });
 })();
