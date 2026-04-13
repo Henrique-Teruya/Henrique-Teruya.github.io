@@ -589,10 +589,9 @@ button:focus-visible {
 .project-card {
   background: var(--bg-dark-surface);
   border-radius: 12px;
-  padding: var(--space-xl);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
   transition:
     background var(--duration-normal) var(--ease-out-quart),
     transform var(--duration-normal) var(--ease-out-expo);
@@ -601,6 +600,88 @@ button:focus-visible {
 .project-card:hover {
   background: var(--bg-dark-surface-hover);
   transform: translateY(-3px);
+}
+
+/* Project image mosaic */
+.project-mosaic {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0d0d0f;
+  display: grid;
+  gap: 2px;
+}
+
+/* 3-image mosaic: main (60%) + two stacked (40%) */
+.mosaic-3 {
+  grid-template-columns: 1.4fr 1fr;
+  aspect-ratio: 16 / 9;
+}
+
+.mosaic-3 .mosaic-main {
+  grid-row: 1 / 1;
+  overflow: hidden;
+}
+
+.mosaic-3 .mosaic-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.mosaic-3 .mosaic-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+}
+
+/* 2-image mosaic: side by side */
+.mosaic-2 {
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 2 / 1;
+}
+
+.mosaic-item {
+  overflow: hidden;
+}
+
+.mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+/* Hover zoom on all mosaic images */
+.project-card:hover .mosaic-main img,
+.project-card:hover .mosaic-item img {
+  transform: scale(1.04);
+}
+
+/* Subtle vignette on mosaic bottom for continuity with card body */
+.project-mosaic::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32%;
+  background: linear-gradient(to top, var(--bg-dark-surface) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Card body content */
+.project-card-body {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
 }
 
 .project-card-header {
@@ -966,7 +1047,7 @@ button:focus-visible {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .project-card {
+  .project-card-body {
     padding: var(--space-2xl);
   }
 }
@@ -1028,8 +1109,18 @@ button:focus-visible {
     gap: var(--space-md);
   }
 
-  .project-card {
+  .project-card-body {
     padding: var(--space-lg);
+  }
+
+  .mosaic-3 {
+    grid-template-columns: 1fr;
+    aspect-ratio: 4 / 3;
+  }
+
+  .mosaic-3 .mosaic-stack {
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr;
   }
 
   .contact-links {
