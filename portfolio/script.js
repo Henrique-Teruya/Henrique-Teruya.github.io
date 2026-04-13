@@ -36,6 +36,50 @@
 
   revealElements.forEach((el) => revealObserver.observe(el));
 
+  // ─── Stat Count-up Animation ─────────────────────────
+
+  const countElements = document.querySelectorAll('[data-count-target]');
+
+  const animateCount = (el) => {
+    const target = parseInt(el.getAttribute('data-count-target'));
+    const duration = 2000; // 2 seconds
+    const start = 0;
+    const startTime = performance.now();
+
+    const update = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Ease out cubic function
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      
+      const currentCount = Math.floor(easeProgress * (target - start) + start);
+      el.textContent = currentCount;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target; // Ensure it ends exactly at target
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const countObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  countElements.forEach((el) => countObserver.observe(el));
+
   // ─── Navigation: scroll state ────────────────────────
 
   let lastScrollY = 0;

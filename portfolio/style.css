@@ -524,10 +524,32 @@ button:focus-visible {
 
 /* ─── About Section ─────────────────────────────────── */
 
-.about-grid {
+.about-top {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3xl);
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.about-image {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e8ea;
+  aspect-ratio: 4 / 5;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.about-image:hover img {
+  transform: scale(1.03);
 }
 
 .about-text p {
@@ -543,28 +565,50 @@ button:focus-visible {
 }
 
 .about-stats {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
+  margin-top: var(--space-2xl);
 }
 
 .stat {
-  padding: var(--space-lg) 0;
-  border-top: 1px solid rgba(29, 29, 31, 0.1);
+  position: relative;
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
 }
 
-.stat:last-child {
-  border-bottom: 1px solid rgba(29, 29, 31, 0.1);
+.stat::before,
+.stat::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+
+
+/* Vertical corner strokes (multi-cell handling) */
+.stat::after {
+  border-left: 1px solid rgba(29, 29, 31, 0.15);
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 24px, transparent 50%, black calc(100% - 24px), black 100%);
+  mask-image: linear-gradient(to top, black 0%, black 24px, transparent 50%, black calc(100% - 24px), black 100%);
+}
+
+.stat:last-child::after {
+  border-right: 1px solid rgba(29, 29, 31, 0.15);
 }
 
 .stat-value {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--text-on-light);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .stat-label {
@@ -1016,10 +1060,15 @@ button:focus-visible {
 /* ─── Responsive: Tablet (640px+) ───────────────────── */
 
 @media (min-width: 640px) {
-  .about-grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: start;
+  .about-top {
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
     gap: var(--space-3xl);
+  }
+
+  .about-image {
+    max-width: none;
+    margin: 0;
   }
 
   .projects-grid {
@@ -1084,25 +1133,26 @@ button:focus-visible {
     text-align: center;
   }
 
+  .about-top {
+    gap: var(--space-xl);
+  }
+
+  .about-image {
+    max-width: 280px;
+    margin: 0 auto;
+    order: -1;
+  }
+
   .about-stats {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0;
+    grid-template-columns: 1fr;
   }
 
   .stat {
-    flex: 1 1 50%;
-    min-width: 140px;
-    border-top: 1px solid rgba(29, 29, 31, 0.1);
-    padding: var(--space-md) var(--space-sm) var(--space-md) 0;
-  }
-
-  .stat:last-child {
-    border-bottom: none;
+    padding: var(--space-lg) 0;
   }
 
   .stat-value {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .projects-grid {
