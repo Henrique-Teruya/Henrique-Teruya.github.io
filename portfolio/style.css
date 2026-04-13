@@ -538,6 +538,7 @@ button:focus-visible {
   aspect-ratio: 4 / 5;
   max-width: 340px;
   margin: 0 auto;
+  grid-row: 1;
 }
 
 .about-image img {
@@ -593,8 +594,6 @@ button:focus-visible {
 /* Vertical corner strokes (multi-cell handling) */
 .stat::after {
   border-left: 1px solid rgba(29, 29, 31, 0.15);
-  -webkit-mask-image: linear-gradient(to top, black 0%, black 24px, transparent 50%, black calc(100% - 24px), black 100%);
-  mask-image: linear-gradient(to top, black 0%, black 24px, transparent 50%, black calc(100% - 24px), black 100%);
 }
 
 .stat:last-child::after {
@@ -1061,12 +1060,18 @@ button:focus-visible {
 
 @media (min-width: 640px) {
   .about-top {
+    grid-template-areas: "text image";
     grid-template-columns: 1.3fr 0.7fr;
     align-items: center;
     gap: var(--space-3xl);
   }
 
+  .about-text {
+    grid-area: text;
+  }
+
   .about-image {
+    grid-area: image;
     max-width: none;
     margin: 0;
   }
@@ -1134,13 +1139,18 @@ button:focus-visible {
   }
 
   .about-top {
+    grid-template-areas: "image" "text";
     gap: var(--space-xl);
   }
 
+  .about-text {
+    grid-area: text;
+  }
+
   .about-image {
+    grid-area: image;
     max-width: 280px;
     margin: 0 auto;
-    order: -1;
   }
 
   .about-stats {
