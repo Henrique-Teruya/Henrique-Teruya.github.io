@@ -56,18 +56,22 @@
 
   const countElements = document.querySelectorAll('[data-count-target]');
 
-  // Calculate dynamic dates before animation triggers
-  const dynamicCountDates = document.querySelectorAll('[data-count-date]');
-  dynamicCountDates.forEach(el => {
-    const startDate = new Date(el.getAttribute('data-count-date') + 'T00:00:00'); // Ensure local timezone
-    const today = new Date();
-    const timeDiff = today - startDate;
-    const daysDiff = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
-    el.setAttribute('data-count-target', daysDiff);
-  });
-
   const animateCount = (el) => {
-    const target = parseInt(el.getAttribute('data-count-target'));
+    let target = parseInt(el.getAttribute('data-count-target'));
+
+    // Handle dynamic date targets
+    const dateAttr = el.getAttribute('data-count-date');
+    if (dateAttr) {
+      const startDate = new Date(dateAttr + 'T00:00:00');
+      const today = new Date();
+      if (!isNaN(startDate.getTime())) {
+        const timeDiff = today - startDate;
+        target = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+      }
+    }
+
+    if (isNaN(target)) return;
+
     const duration = 2000; // 2 seconds
     const start = 0;
     const startTime = performance.now();
