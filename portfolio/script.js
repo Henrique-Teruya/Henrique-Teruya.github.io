@@ -463,4 +463,54 @@
       }
     });
   }
+
+  // ─── Language Toast ──────────────────────────────────
+  const langToast = document.getElementById('lang-toast');
+  if (langToast) {
+    const closeBtn = document.getElementById('lang-toast-close');
+    const heroSection = document.getElementById('hero');
+    
+    // Check if dismissed in this session
+    const isDismissed = sessionStorage.getItem('langToastDismissed');
+    
+    if (!isDismissed) {
+      // Show it after a small delay
+      setTimeout(() => {
+        // Only show if we are still at the top
+        if (window.scrollY < (heroSection ? heroSection.offsetHeight * 0.5 : 300)) {
+          langToast.classList.add('is-visible');
+        }
+      }, 1500);
+      
+      const dismissToast = () => {
+        langToast.classList.remove('is-visible');
+        sessionStorage.setItem('langToastDismissed', 'true');
+      };
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', dismissToast);
+      }
+      
+      // Dismiss toast if the user clicks the dropdown
+      if (langDropdown) {
+        const dropBtn = langDropdown.querySelector('.lang-dropdown-btn');
+        if (dropBtn) {
+          dropBtn.addEventListener('click', dismissToast);
+        }
+      }
+
+      // Hide on scroll past hero
+      const handleToastScroll = () => {
+        if (sessionStorage.getItem('langToastDismissed')) return;
+        
+        const heroBottom = heroSection ? heroSection.offsetHeight : 400;
+        if (window.scrollY > heroBottom * 0.5) {
+          dismissToast();
+          window.removeEventListener('scroll', handleToastScroll);
+        }
+      };
+
+      window.addEventListener('scroll', handleToastScroll, { passive: true });
+    }
+  }
 })();

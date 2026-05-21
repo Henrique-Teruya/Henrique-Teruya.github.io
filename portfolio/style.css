@@ -1572,3 +1572,79 @@ body.menu-open,
 body.lightbox-open {
   overflow: hidden;
 }
+
+/* ─── Language Toast (Tooltip) ─────────────────────── */
+.lang-toast {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  width: max-content;
+  max-width: 220px;
+  background: rgba(21, 21, 23, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 245, 247, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform var(--duration-normal) var(--ease-out-quart),
+    opacity var(--duration-normal) var(--ease-out-quart),
+    visibility var(--duration-normal);
+}
+
+.lang-toast::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 20px;
+  border: 7px solid transparent;
+  border-bottom-color: rgba(21, 21, 23, 0.95);
+}
+
+.lang-toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.lang-toast-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.lang-toast-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-on-dark);
+  line-height: 1.4;
+}
+
+.lang-toast-close {
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(245, 245, 247, 0.5);
+  transition: color var(--duration-fast);
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: -2px;
+}
+
+.lang-toast-close:hover {
+  color: var(--text-on-dark);
+}
+
+@media (max-width: 768px) {
+  .lang-toast {
+    display: none; /* Tooltip doesn't apply cleanly inside mobile menu logic */
+  }
+}
