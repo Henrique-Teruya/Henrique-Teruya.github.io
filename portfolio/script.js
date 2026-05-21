@@ -434,4 +434,33 @@
     if (e.key === 'ArrowLeft' && currentGallery.length > 1) navigateLightbox(-1);
     if (e.key === 'ArrowRight' && currentGallery.length > 1) navigateLightbox(1);
   });
+
+  // ─── Language Dropdown Toggle ──────────────────────
+  const langDropdown = document.getElementById('lang-dropdown');
+  if (langDropdown) {
+    const btn = langDropdown.querySelector('.lang-dropdown-btn');
+    
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = langDropdown.classList.toggle('is-active');
+      btn.setAttribute('aria-expanded', isActive);
+    });
+
+    // Close dropdown on click outside
+    document.addEventListener('click', (e) => {
+      if (!langDropdown.contains(e.target)) {
+        langDropdown.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && langDropdown.classList.contains('is-active')) {
+        langDropdown.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  }
 })();
